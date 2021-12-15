@@ -94,13 +94,17 @@ def login():
     email = request.form["email"]
     password = request.form["password"]
     consultar_usuarios = Usuarios.query.filter_by(email=email).first()
-    if bcrypt.check_password_hash(consultar_usuarios.password,password) == True:
-        resp = make_response(render_template("menu.html"))
-        resp.set_cookie("usuario", str(consultar_usuarios.idUsuario))
-        return resp
+    if consultar_usuarios == None:
+        mensaje="Correo no existente"
+        return render_template("index.html", mensaje=mensaje) 
     else:
-        mensaje="Correo o contraseña incorrecto"
-        return render_template("index.html", mensaje=mensaje)
+        if bcrypt.check_password_hash(consultar_usuarios.password,password) == True:
+            resp = make_response(render_template("menu.html"))
+            resp.set_cookie("usuario", str(consultar_usuarios.idUsuario))
+            return resp
+        else:
+            mensaje="Correo o contraseña incorrecto"
+            return render_template("index.html", mensaje=mensaje)
 
 @app.route("/registrar")
 def registrar():
