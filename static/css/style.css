@@ -1,0 +1,69 @@
+body{
+    background-color: rgb(109, 89, 122);
+}
+.form{
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.card{
+    display: flex;
+    position: relative;
+}
+
+.login-form-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+footer{
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    color: black;
+}
+
+.form_libro{
+    display: flex;
+    flex-wrap: wrap;
+    width: 545px;
+}
+
+.form_libro .field{
+    width: 47.8%;
+    margin: 0 5px;
+}
+
+.form_libro .title{
+    width: 100%;
+}
+
+.form_libro .button{
+    margin-top: 10px;
+}
+
+.panel_menu{
+    background-color: rgb(234, 172, 139);
+    color:white;
+}
+
+.form .button{
+    background-color: rgb(234, 172, 139);
+}
+
+.error{
+    color: red;
+}

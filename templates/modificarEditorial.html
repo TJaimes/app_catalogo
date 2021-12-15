@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block encabezado %}
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div id="navbarBasicExample" class="navbar-menu">
+
+      <div class="navbar-start">
+        <div class="card-content">
+            <p class="title">Modificar Editorial</p>
+        </div>
+      </div>
+  
+      <div class="navbar-end">
+        <a href="/menu"class="navbar-item">
+            Inicio
+          </a>
+          <a href="/mis_favoritos"class="navbar-item">
+            Mis Favoritos
+          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Catálogos
+            </a>
+            <div class="navbar-dropdown">
+              <a href="/catalogo_libro"class="navbar-item">
+                Libros
+              </a>
+              <a href="/catalogo_autor" class="navbar-item">
+                Autores
+              </a>
+              <a href="/catalogo_editorial" class="navbar-item">
+                Editoriales
+              </a>
+              <a href="/catalogo_genero" class="navbar-item">
+                Géneros
+              </a>
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Registrar
+            </a>
+            <div class="navbar-dropdown">
+              <a href="/formulario_libro"class="navbar-item">
+                Libro
+              </a>
+              <a href="/formulario_autor" class="navbar-item">
+                Autor
+              </a>
+              <a href="/formulario_editorial" class="navbar-item">
+                Editorial
+              </a>
+              <a href="/formulario_genero" class="navbar-item">
+                Género
+              </a>
+            </div>
+          </div>
+          <a href="/iniciar"class="navbar-item">
+            Cerrar Sesión
+          </a>
+      </div>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block content %}
+<div class="login-form-container">
+    <form action="/modificareditorial" method ="post" class="box">
+        <div class="field">
+            <input type="hidden" name="id_editorial" value="{{editorial.id_editorial}}">
+            <p class="title is-4 is-primary has-text-centered">Modificar Editorial</p>
+            <label class="label">Nombre</label>
+            <div class="control has-icons-left has-icons-right">
+            <input class="input" type="text" name="nombre_editorial" placeholder="Penguin Random House">
+            <span class="icon is-small is-left">
+                <i class="material-icons">abc</i>
+              </span>
+            </div>
+        </div>
+        
+        <button class="button is-fullwidth">Modificar</button>
+    </form>
+</div>
+{% endblock %}

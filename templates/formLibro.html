@@ -1,0 +1,176 @@
+{% extends "layout.html" %}
+
+{% block encabezado %}
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div id="navbarBasicExample" class="navbar-menu">
+
+      <div class="navbar-start">
+        <div class="card-content">
+            <p class="title">Registrar Libro</p>
+        </div>
+      </div>
+  
+      <div class="navbar-end">
+        <a href="/menu"class="navbar-item">
+            Inicio
+          </a>
+          <a href="/mis_favoritos"class="navbar-item">
+            Mis Favoritos
+          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Catálogos
+            </a>
+            <div class="navbar-dropdown">
+              <a href="/catalogo_libro"class="navbar-item">
+                Libros
+              </a>
+              <a href="/catalogo_autor" class="navbar-item">
+                Autores
+              </a>
+              <a href="/catalogo_editorial" class="navbar-item">
+                Editoriales
+              </a>
+              <a href="/catalogo_genero" class="navbar-item">
+                Géneros
+              </a>
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Registrar
+            </a>
+            <div class="navbar-dropdown">
+              <a href="/formulario_libro"class="navbar-item">
+                Libro
+              </a>
+              <a href="/formulario_autor" class="navbar-item">
+                Autor
+              </a>
+              <a href="/formulario_editorial" class="navbar-item">
+                Editorial
+              </a>
+              <a href="/formulario_genero" class="navbar-item">
+                Género
+              </a>
+            </div>
+          </div>
+          <a href="/iniciar"class="navbar-item">
+            Cerrar Sesión
+          </a>
+      </div>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block content %}
+<div class="login-form-container">
+    <form action="/registrar_libro" method ="post" class="box form_libro">
+      <p class="title is-4 is-primary has-text-centered">Registro de Libro</p>
+        <div class="field">
+            <label class="label">Título</label>
+            <div class="control has-icons-left has-icons-right">
+            <input class="input" type="text" name="titulo_libro" placeholder="El Castillo Ambulante">
+            <span class="icon is-small is-left">
+                <i class="material-icons">abc</i>
+              </span>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Fecha de publicación</label>
+            <div class="control has-icons-left has-icons-right">
+            <input class="input" type="date" name="fecha_publicacion" placeholder="mm/dd/yyyy">
+            <span class="icon is-small is-left">
+                <i class="material-icons">today</i>
+              </span>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Número de páginas</label>
+            <div class="control has-icons-left has-icons-right">
+            <input class="input" type="text" name="numero_paginas" placeholder="585">
+            <span class="icon is-small is-left">
+                <i class="material-icons">numbers</i>
+              </span>
+            </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Formato</label>
+          <div class="control has-icons-left">
+              <div class="select">
+                <select name="formato">
+                  <option selected>Selecciona una opción</option>
+                  <option>Físico</option>
+                  <option>Digital</option>
+                </select>
+              </div>
+              <span class="icon is-small is-left">
+                  <i class="material-icons">auto_stories</i>
+                </span>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Volumen</label>
+            <div class="control has-icons-left has-icons-right">
+            <input class="input" type="text" name="volumen" placeholder="Insertar solo un número">
+            <span class="icon is-small is-left">
+                <i class="material-icons">numbers</i>
+              </span>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Editorial</label>
+            <div class="control has-icons-left">
+                <div class="select">
+                  <select name="editorial">
+                    {% for editorial in consulta_editorial %}
+                        <option value="{{editorial.id_editorial}}">{{editorial.nombre_editorial}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <span class="icon is-small is-left">
+                    <i class="material-icons">book</i>
+                  </span>
+              </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Autor</label>
+            <div class="control has-icons-left">
+                <div class="select">
+                  <select name="autor">
+                    {% for autor in consulta_autor %}
+                        <option value="{{autor.id_autor}}">{{autor.nombre_autor}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <span class="icon is-small is-left">
+                    <i class="material-icons">person</i>
+                  </span>
+              </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Género</label>
+            <div class="control has-icons-left">
+                <div class="select">
+                  <select name="genero">
+                    {% for genero in consulta_genero %}
+                        <option value="{{genero.id_genero}}">{{genero.nombre_genero}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <span class="icon is-small is-left">
+                    <i class="material-icons">history_edu</i>
+                  </span>
+              </div>
+        </div>
+        <button class="button is-fullwidth">Registrar</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="login-form-container">
+      <form action="/login" method ="post" class="box">
+        <div class="card-content">
+          <p class="title is-4 is-primary has-text-centered">Inicio de Sesión</p>
+    
+        <div class="content">
+            <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                  <input class="input" type="email" name="email" placeholder="Email">
+                  <span class="icon is-small is-left">
+                    <i class="material-icons">alternate_email</i>
+                  </span>
+                </p>
+              </div>
+              <div class="field">
+                <p class="control has-icons-left">
+                  <input class="input" type="password" name="password" placeholder="Password">
+                  <span class="icon is-small is-left">
+                    <i class="material-icons">lock</i>
+                  </span>
+                </p>
+              </div>
+              <div class="field">
+                <p class="error">{{mensaje}}</p>
+                <a href="/registrar">¿No tienes cuenta? click aquí para registrarte</a>
+              </div>
+              <button class="button is-fullwidth">Login</button>
+        </div>
+        </div>
+      </form>
+</div>
+{% endblock %}
